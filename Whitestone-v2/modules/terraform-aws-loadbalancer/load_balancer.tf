@@ -5,8 +5,13 @@ resource "aws_lb" "loadbalancer" {
 
   subnets = var.subnets
 
-  security_groups = var.lb_type != "application" ? [] : concat(
-    [aws_security_group.load_balancer_security_group[0].id],
+  # security_groups = var.lb_type != "application" ? [] : concat(
+  #   [aws_security_group.load_balancer_security_group[0].id],
+  #   var.security_groups
+  # )
+
+  security_groups = concat(
+    [aws_security_group.load_balancer_security_group.id],
     var.security_groups
   )
 
