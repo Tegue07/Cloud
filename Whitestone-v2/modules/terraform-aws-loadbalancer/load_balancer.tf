@@ -23,6 +23,15 @@ resource "aws_lb" "loadbalancer" {
   #   enabled = true
   # }
 
+  dynamic "access_logs" {
+    for_each = var.enable_access_logs == true ? [1] : []
+    content {
+      bucket  = var.logging_bucket
+      prefix  = var.lb_logging_prefix
+      enabled = true
+    }
+  }
+
   tags = var.tags
 }
 

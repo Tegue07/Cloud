@@ -17,6 +17,8 @@ module node_nlb {
      #security_groups     = [aws_security_group.nlb_sg.id]
      health_check_path   = "/healthz.html"
 
+     enable_access_logs  = false
+
     tags = {
       "Name" = "whitestone-nats-nlb"
     }

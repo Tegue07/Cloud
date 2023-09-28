@@ -44,15 +44,23 @@ variable "security_groups" {
   description = "List of additional security group ids of security groups to assign to the LB"
 }
 
-# variable "logging_bucket" {
-#   type        = string
-#   description = "Name of S3 bucket to store the ALB logs to"
-# }
+variable  "enable_access_logs"{
+  type = bool
+  default = false
+  description = "if true will create access logs for LB"
+}
 
-# variable "lb_logging_prefix" {
-#   type        = string
-#   description = "Prefix for the quartz gateway in the logging bucket"
-# }
+variable "logging_bucket" {
+  type        = string
+  description = "Name of S3 bucket to store the ALB logs to"
+  default     = ""
+}
+
+variable "lb_logging_prefix" {
+  type        = string
+  description = "Prefix for the quartz gateway in the logging bucket"
+  default     = ""
+}
 
 variable "target_group_name" {
   type        = string
